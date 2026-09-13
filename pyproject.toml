@@ -1,0 +1,26 @@
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "SIM", "D"]
+ignore = ["D100", "D104", "D203", "D213"]
+
+# Exercism stubs ship Google-style docstrings. Without this, Ruff enables the
+# numpy-convention rules too (D406/D407/D413) and underlines every docstring line.
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+# Exercism ships the test files; they are overwritten on re-download, so do not
+# lint their docstrings or line lengths.
+"*_test.py" = ["D", "E501"]
+
+[tool.mypy]
+strict = true
+exclude = ["_test\\.py$"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+# The Exercism Python track tags every test with @pytest.mark.task(taskno=N).
+markers = ["task: Exercism task number this test covers"]
