@@ -31,15 +31,51 @@ cat <name>.py <name>_test.py                    # read stub + tests first
 Write the solution in `<name>.py`, then:
 
 ```bash
-pytest                      # run tests
-make check                  # format + lint + type-check + tests (from repo root or exercise dir)
-exercism submit <name>.py   # upload solution
+pytest        # run tests
+make check    # format + lint + type-check + tests (from repo root or exercise dir)
 ```
 
-Or `exercism submit` with no args submits every solution file in the current exercise.
+Then submit — see below.
 
-After submitting, open the exercise on exercism.org, compare with community
-solutions, and add one line to `NOTES.md`: what you learned.
+## Submitting
+
+Submit only after `make check` is green. Run it from **inside the exercise
+directory**:
+
+```bash
+cd python/black-jack
+exercism submit                 # submits the exercise's solution file(s)
+exercism submit black_jack.py   # or name the files explicitly
+```
+
+With no arguments the CLI submits the exercise's *default solution files* —
+the list under `files.solution` in `.exercism/config.json`. For `black-jack`
+that is exactly `black_jack.py`, so the bare form is what you want almost
+every time.
+
+Note what is **not** sent: the `_test.py` file, `README.md`, and `HINTS.md`
+are Exercism's, not yours. Editing them locally is fine (they are overwritten
+on re-download) but they never reach the server.
+
+On success the CLI prints a URL to the submitted solution. Open it and:
+
+1. **Mark as complete** — this unlocks the exercise's community solutions.
+2. **Compare** two or three community solutions against yours. This is the
+   part that actually teaches; skipping it wastes the exercise.
+3. Add one line to `NOTES.md`: what you learned.
+4. Commit: `git add python/<name> NOTES.md && git commit -m "solve <name>"`
+
+Submitting again after a change creates a new iteration rather than replacing
+the old one, so it is safe to submit, read community solutions, refactor, and
+submit a second time.
+
+### If submit fails
+
+| Message | Cause |
+|---------|-------|
+| `no exercise found` | You are not inside the exercise directory, or the exercise was never downloaded. `cd python/<name>` first. |
+| `not authenticated` / 401 | Token missing. `exercism configure --token=<token>` from [your settings page](https://exercism.org/settings/api_cli). |
+| Submits to the wrong workspace | `exercism configure --workspace="$(pwd)"` from the repo root. Needed after moving or renaming this folder. |
 
 ## Tooling
 
@@ -59,7 +95,7 @@ Config lives in `pyproject.toml` at the repo root and applies to every exercise.
 - After tests pass, spend 5 min making it Pythonic (comprehensions, `dataclass`,
   `enumerate`/`zip`, `pathlib`, `match`).
 - One exercise per session, 20–30 min. Stop while it's still fun.
-- Commit each solved exercise: `git add python/<name> NOTES.md && git commit -m "solve <name>"`.
+- Commit each solved exercise (see [Submitting](#submitting) for the full flow).
 
 ## Useful
 

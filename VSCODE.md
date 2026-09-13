@@ -12,7 +12,7 @@ code .
 1. Install the recommended extensions: `⌘⇧P` → **Extensions: Show Recommended Extensions** → Install all.
    (Python, Pylance, Ruff, Mypy, GitLens, Error Lens, Exercism.)
 2. Select the interpreter: `⌘⇧P` → **Python: Select Interpreter** → `./.venv/bin/python`.
-   Bottom-right status bar must show `3.12 ('.venv')`.
+   Bottom-right status bar must show the `.venv` interpreter (currently Python 3.14).
 3. Open a new terminal (`` ⌃` ``) — the venv activates automatically.
 4. `⌘⇧P` → **Test: Refresh Tests** → the flask icon (Testing sidebar) lists every exercise.
 
@@ -52,7 +52,7 @@ turn it off in *Cursor Settings → Tab*, or add
 | Debug a failing test | click the 🐞 next to the test; set breakpoint with `F9`; step `F10` / into `F11` |
 | Format / lint / imports | manual only: `⌥⇧F`, or `make check` before submitting (see §1a) |
 | See problems | `⌘⇧M` (Problems panel) — Error Lens also shows them inline |
-| Submit | terminal: `exercism submit <name>.py` |
+| Submit | terminal: `cd python/<name> && exercism submit` — full flow in [README § Submitting](README.md#submitting) |
 | Commit | `⌃⇧G` → stage → message → `⌘Enter` |
 
 ## 3. Shortcuts worth memorising
