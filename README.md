@@ -10,10 +10,14 @@ Exercises live in `python/<exercise-name>/`.
 exercism configure --workspace="$(pwd)"      # only if you move the repo
 
 # 2. Python environment (one venv for the whole repo)
-python3 -m venv .venv          # or: uv venv
+uv venv                                  # or: python3 -m venv .venv
 source .venv/bin/activate
-pip install pytest ruff mypy   # or: uv pip install pytest ruff mypy
+uv pip install -r requirements-dev.txt   # or: pip install -r requirements-dev.txt
 ```
+
+Tool versions are pinned in `requirements-dev.txt` so that local and CI always
+agree. To upgrade one, bump the pin, run `make check`, and commit the pin
+together with any fixes the new version demands.
 
 Check it works: `pytest --version && ruff --version`.
 
@@ -88,6 +92,10 @@ submit a second time.
 | `make check`            | all of the above in one go                    |
 
 Config lives in `pyproject.toml` at the repo root and applies to every exercise.
+
+`make check` also runs in CI on every push and pull request
+(`.github/workflows/check.yml`), against the pinned versions in
+`requirements-dev.txt` and the same Python version as the local venv.
 
 ## Rules I follow
 

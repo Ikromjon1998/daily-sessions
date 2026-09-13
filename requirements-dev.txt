@@ -1,0 +1,6 @@
+# Tooling for `make check`. Pinned so CI and local always agree, and so a new
+# ruff release cannot turn the build red on code that did not change.
+# To upgrade: bump a pin, run `make check`, commit the pin with the fixes.
+pytest==9.1.1
+ruff==0.16.7
+mypy==2.3.1
