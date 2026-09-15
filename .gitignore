@@ -1,5 +1,17 @@
+# Python
 .venv/
 __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+
+# macOS
+.DS_Store
+
+# Machine-local config: the PyCharm MCP server binds an ephemeral localhost
+# port, so a committed copy would be wrong on any other machine.
+/.mcp.json
+
+# Superseded duplicate of this file, kept only so nothing is lost by deleting
+# it. Anchored with a leading slash so it cannot match a real directory.
+/gitignore
