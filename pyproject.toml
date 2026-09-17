@@ -12,9 +12,10 @@ ignore = ["D100", "D104", "D203", "D213"]
 convention = "google"
 
 [tool.ruff.lint.per-file-ignores]
-# Exercism ships the test files; they are overwritten on re-download, so do not
-# lint their docstrings or line lengths.
-"*_test.py" = ["D", "E501"]
+# Exercism ships the test files; they are overwritten on re-download, so findings
+# there are not actionable. D/E501: docstrings and line length. I001: import
+# sorting. B905: zip() without strict=.
+"*_test.py" = ["D", "E501", "I001", "B905"]
 
 [tool.mypy]
 strict = true

@@ -17,3 +17,12 @@ One entry per exercise: what I learned.
   - Negative indexes just work: `words[-1]` is the last word. No length maths.
   - `strip('.')` removes the character when it is there and does nothing when
     it is not, so it can replace a whole if/else.
+  - Clean-up pass, after the tests were already green:
+    - `from typing import List` is the old way. Since Python 3.9 the builtin
+      works as a type: `list[str]`, and there is nothing to import.
+    - Leaving one parameter untyped made mypy call my *return value* `Any`,
+      even though I had annotated the return as `-> str`. One missing hint
+      spreads to everything downstream of it.
+    - My long line was 94 characters because it repeated `words[index]` three
+      times. Swapping the if/else for `.strip('.')` took it to 41. The fix was
+      deleting the branch, not wrapping the line.

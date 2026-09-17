@@ -1,5 +1,4 @@
 """Functions for creating, transforming, and adding prefixes to strings."""
-from typing import List
 
 
 def add_prefix_un(word: str) -> str:
@@ -11,10 +10,10 @@ def add_prefix_un(word: str) -> str:
     Returns:
         str: Root word prepended with 'un'.
     """
-    return 'un' + word
+    return "un" + word
 
 
-def make_word_groups(vocab_words: List[str]) -> str:
+def make_word_groups(vocab_words: list[str]) -> str:
     """Transform a list containing a prefix and words.
 
     Parameters:
@@ -32,10 +31,10 @@ def make_word_groups(vocab_words: List[str]) -> str:
 
     """
     changed_vocab_words = [vocab_words[0] + word for word in vocab_words[1:]]
-    return vocab_words[0] + ' :: ' + " :: ".join(changed_vocab_words)
+    return vocab_words[0] + " :: " + " :: ".join(changed_vocab_words)
 
 
-def remove_suffix_ness(word) -> str:
+def remove_suffix_ness(word: str) -> str:
     """Remove the suffix from the word while keeping spelling in mind.
 
     Parameters:
@@ -52,11 +51,11 @@ def remove_suffix_ness(word) -> str:
         'sad'
 
     """
-    raw_word = word.removesuffix('ness')
-    return raw_word if raw_word[-1] != 'i' else raw_word[:-1] + 'y'
+    raw_word = word.removesuffix("ness")
+    return raw_word if raw_word[-1] != "i" else raw_word[:-1] + "y"
 
 
-def adjective_to_verb(sentence, index):
+def adjective_to_verb(sentence: str, index: int) -> str:
     """Change the adjective within the sentence to a verb.
 
     Parameters:
@@ -74,6 +73,5 @@ def adjective_to_verb(sentence, index):
         'blacken'
 
     """
-    words = sentence.split(' ')
-    return words[index] + 'en' if not words[index].endswith('.') else words[index][:-1] + 'en'
-
+    words = sentence.split(" ")
+    return words[index].strip(".") + "en"
